@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Nicky 💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #ff6fa8;
+    --pink-dark: #ff3d84;
+    --pink-light: #ffb3d1;
+    --pink-soft: #fff0f6;
+    --yellow: #ffe066;
+    --peach: #ffcba4;
+    --purple: #c77dff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fff0f6 0%, #fff8e1 50%, #fce4f7 100%);
+    font-family: 'Nunito', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    padding: 20px;
+  }
+
+  .bg-hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .bg-heart {
+    position: absolute;
+    opacity: 0.12;
+    animation: floatUp linear infinite;
+  }
+  @keyframes floatUp {
+    0%   { transform: translateY(110vh) rotate(0deg); opacity: 0.12; }
+    100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+  }
+
+  /* ── MAIN CARD ── */
+  .card {
+    position: relative;
+    z-index: 2;
+    background: rgba(255,255,255,0.92);
+    border-radius: 36px;
+    padding: 44px 48px 40px;
+    max-width: 480px;
+    width: 94vw;
+    box-shadow: 0 8px 48px rgba(255,111,168,0.20), 0 2px 12px rgba(255,111,168,0.10);
+    text-align: center;
+    backdrop-filter: blur(8px);
+    border: 2px solid rgba(255,179,209,0.55);
+    transition: transform 0.3s;
+  }
+
+  .card-emoji {
+    font-size: 3.8rem;
+    display: block;
+    margin-bottom: 8px;
+    animation: heartbeat 1.5s ease-in-out infinite;
+  }
+  @keyframes heartbeat {
+    0%,100% { transform: scale(1); }
+    14%     { transform: scale(1.2); }
+    28%     { transform: scale(1); }
+    42%     { transform: scale(1.13); }
+    56%     { transform: scale(1); }
+  }
+
+  h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.1rem;
+    color: var(--pink);
+    margin-bottom: 6px;
+    text-shadow: 0 2px 10px rgba(255,111,168,0.18);
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    color: #e07aaa;
+    font-weight: 600;
+    margin-bottom: 24px;
+    line-height: 1.55;
+  }
+
+  /* ── TRAITS ── */
+  .traits-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #d63384;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 10px;
+    opacity: 0.7;
+  }
+  .traits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    justify-content: center;
+    margin-bottom: 26px;
+  }
+  .trait {
+    background: linear-gradient(135deg, #fff0f6, #ffe0f0);
+    border: 1.5px solid rgba(255,111,168,0.3);
+    border-radius: 30px;
+    padding: 5px 14px;
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: #d63384;
+    animation: traitPop 0.5s ease backwards;
+  }
+  @keyframes traitPop {
+    from { transform: scale(0.7); opacity: 0; }
+    to   { transform: scale(1);   opacity: 1; }
+  }
+
+  .question {
+    font-size: 1.45rem;
+    font-weight: 900;
+    color: #d63384;
+    margin-bottom: 26px;
+    line-height: 1.3;
+    transition: all 0.4s;
+  }
+
+  .btns {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    border: none;
+    border-radius: 60px;
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 1.2rem;
+    padding: 15px 38px;
+    position: relative;
+    transition: transform 0.15s, box-shadow 0.15s, font-size 0.35s ease, padding 0.35s ease;
+  }
+  .btn-yes {
+    background: linear-gradient(135deg, #ff6fa8, #ff3d84);
+    color: #fff;
+    box-shadow: 0 4px 22px rgba(255,62,126,0.38);
+  }
+  .btn-yes:hover  { transform: scale(1.08) translateY(-2px); box-shadow: 0 8px 30px rgba(255,62,126,0.48); }
+  .btn-yes:active { transform: scale(0.97); }
+
+  .btn-no {
+    background: linear-gradient(135deg, #ffe0f0, #ffc2e0);
+    color: #d63384;
+    box-shadow: 0 4px 16px rgba(255,111,168,0.18);
+  }
+  .btn-no:hover:not(:disabled)  { transform: scale(1.05) translateY(-2px); }
+  .btn-no:active:not(:disabled) { transform: scale(0.97); }
+  .btn-no:disabled {
+    background: #eee;
+    color: #bbb;
+    box-shadow: none;
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  .no-msg {
+    margin-top: 13px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #e07aaa;
+    min-height: 26px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .no-msg.show { opacity: 1; }
+
+  .yes-msg {
+    margin-top: 18px;
+    font-size: 1.12rem;
+    font-weight: 700;
+    color: #d63384;
+    line-height: 1.55;
+    opacity: 0;
+    transform: scale(0.85);
+    transition: opacity 0.5s, transform 0.5s;
+  }
+  .yes-msg.show { opacity: 1; transform: scale(1); }
+
+  /* ── OPEN LETTER button ── */
+  .letter-btn {
+    margin-top: 18px;
+    display: inline-block;
+    background: linear-gradient(135deg, #c77dff, #9b5de5);
+    color: #fff;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 1rem;
+    padding: 13px 30px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 18px rgba(199,125,255,0.35);
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.6s 0.4s, transform 0.6s 0.4s, box-shadow 0.15s;
+    text-decoration: none;
+  }
+  .letter-btn.show { opacity: 1; transform: translateY(0); }
+  .letter-btn:hover { box-shadow: 0 8px 28px rgba(199,125,255,0.5); transform: translateY(-2px); }
+
+  /* ── EMOJI STAGE ── */
+  #emoji-stage {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 99;
+    overflow: hidden;
+  }
+  .dancer {
+    position: absolute;
+    animation: danceFloat 2.5s ease-in-out forwards;
+  }
+  @keyframes danceFloat {
+    0%   { transform: translateY(60px) scale(0.2) rotate(-30deg); opacity: 0; }
+    20%  { opacity: 1; transform: translateY(0) scale(1.2) rotate(15deg); }
+    50%  { transform: translateY(-20px) scale(1.05) rotate(-8deg); }
+    80%  { transform: translateY(-28px) scale(1.08) rotate(6deg); opacity: 1; }
+    100% { transform: translateY(-90px) scale(0.8) rotate(22deg); opacity: 0; }
+  }
+  .confetti-piece {
+    position: absolute;
+    border-radius: 2px;
+    animation: confettiFall linear forwards;
+  }
+  @keyframes confettiFall {
+    0%   { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity: 0.25; }
+  }
+  .heart-burst {
+    position: absolute;
+    animation: burstOut 1s ease-out forwards;
+    pointer-events: none;
+  }
+  @keyframes burstOut {
+    0%   { transform: translate(0,0) scale(0); opacity: 1; }
+    100% { transform: translate(var(--dx), var(--dy)) scale(1.3); opacity: 0; }
+  }
+
+  @keyframes wiggle {
+    0%,100% { transform: translateX(0); }
+    25%     { transform: translateX(-9px) rotate(-5deg); }
+    75%     { transform: translateX(9px) rotate(5deg); }
+  }
+  @keyframes cardShake {
+    0%,100% { transform: translateX(0) rotate(0); }
+    20%     { transform: translateX(-7px) rotate(-1deg); }
+    40%     { transform: translateX(7px) rotate(1deg); }
+    60%     { transform: translateX(-5px); }
+    80%     { transform: translateX(5px); }
+  }
+
+  @media (max-width: 480px) {
+    .card { padding: 34px 22px 34px; }
+    h1    { font-size: 1.7rem; }
+    .question { font-size: 1.2rem; }
+    .btn  { font-size: 1rem; padding: 13px 26px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-hearts" id="bgHearts"></div>
+<div id="emoji-stage"></div>
+
+<div class="card" id="mainCard">
+  <span class="card-emoji" id="mainEmoji">💖</span>
+  <h1>Hey, Nicky! 💌</h1>
+  <p class="subtitle">There's something I've been too shy to say out loud…<br>so I made this page instead 🙈</p>
+
+  <p class="traits-title">things I genuinely love about you</p>
+  <div class="traits" id="traitsBox"></div>
+
+  <div class="question" id="questionText">So… will you give us a chance? 🌸</div>
+
+  <div class="btns">
+    <button class="btn btn-yes" id="btnYes" onclick="clickYes()">Yes 💕</button>
+    <button class="btn btn-no"  id="btnNo"  onclick="clickNo()">No 🙈</button>
+  </div>
+
+  <div class="no-msg" id="noMsg"></div>
+  <div class="yes-msg" id="yesMsg"></div>
+  <a id="letterBtn" class="letter-btn" href="#" onclick="openLetter(event)">💌 Read my letter to you</a>
+</div>
+
+<script>
+  // ── Traits ──
+  const traits = [
+    { emoji: "🌟", label: "so caring" },
+    { emoji: "💡", label: "super intelligent" },
+    { emoji: "😂", label: "funny & witty" },
+    { emoji: "🌸", label: "genuinely kind" },
+    { emoji: "🧠", label: "so interesting to talk to" },
+    { emoji: "🎀", label: "incredibly cute" },
+    { emoji: "🎙️", label: "your voice omg" },
+    { emoji: "🌿", label: "mature & grounded" },
+    { emoji: "🫂", label: "so supportive" },
+    { emoji: "💪", label: "you motivate me" },
+    { emoji: "🤝", label: "respectful" },
+    { emoji: "✨", label: "just… you" },
+  ];
+
+  const traitsBox = document.getElementById('traitsBox');
+  traits.forEach((t, i) => {
+    const el = document.createElement('span');
+    el.className = 'trait';
+    el.textContent = t.emoji + ' ' + t.label;
+    el.style.animationDelay = (i * 0.07) + 's';
+    traitsBox.appendChild(el);
+  });
+
+  // ── Background hearts ──
+  const bgHearts = document.getElementById('bgHearts');
+  const heartEmojis = ['💖','💗','💕','🌸','✨','💫','🌷','🎀'];
+  for (let i = 0; i < 24; i++) {
+    const h = document.createElement('div');
+    h.className = 'bg-heart';
+    h.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+    h.style.left = Math.random() * 100 + 'vw';
+    h.style.fontSize = (1.1 + Math.random() * 1.6) + 'rem';
+    h.style.animationDuration = (9 + Math.random() * 14) + 's';
+    h.style.animationDelay   = (-Math.random() * 18) + 's';
+    bgHearts.appendChild(h);
+  }
+
+  // ── No messages ──
+  let noCount = 0;
+  let yesClicked = false;
+
+  const noMessages = [
+    "Are you sure, Nicky? 🥺",
+    "Really really sure? 🐣",
+    "Come on… look at that Yes button 👀",
+    "Hmm I don't think you mean that 😏",
+    "The Yes button is getting lonely 💔",
+    "Pleaaase Nicky?? 🥹",
+    "Okay but… what if you just tried Yes? 🌸",
+    "I made this whole page for you!! 😭",
+    "Last chance, I promise 🙈",
+    "...Nicky. You KNOW you want to 💖"
+  ];
+
+  function clickNo() {
+    if (yesClicked) return;
+    noCount++;
+
+    const msgEl = document.getElementById('noMsg');
+    msgEl.textContent = noMessages[Math.min(noCount - 1, noMessages.length - 1)];
+    msgEl.classList.add('show');
+
+    // Grow Yes button
+    const yesBtn = document.getElementById('btnYes');
+    const curSize = parseFloat(yesBtn.style.fontSize) || 1.2;
+    yesBtn.style.fontSize = Math.min(curSize + 0.24, 2.8) + 'rem';
+    yesBtn.style.padding  = `${15 + noCount * 3}px ${38 + noCount * 7}px`;
+
+    // Wiggle No
+    const noBtn = document.getElementById('btnNo');
+    noBtn.style.animation = 'none';
+    void noBtn.offsetWidth;
+    noBtn.style.animation = 'wiggle 0.45s ease';
+
+    // Shake card
+    const card = document.getElementById('mainCard');
+    card.style.animation = 'none';
+    void card.offsetWidth;
+    card.style.animation = 'cardShake 0.45s ease';
+  }
+
+  function clickYes() {
+    if (yesClicked) { launchCelebration(); return; }
+    yesClicked = true;
+
+    document.getElementById('btnNo').disabled = true;
+    document.getElementById('noMsg').classList.remove('show');
+    document.getElementById('questionText').textContent = '🎉 Yay!! Nicky said YES!! 🎉';
+    document.getElementById('mainEmoji').textContent = '🥰';
+
+    const yesMsg = document.getElementById('yesMsg');
+    yesMsg.innerHTML = "You just made me the happiest person ever!<br>You have no idea how long I've wanted to say this 💖";
+    yesMsg.classList.add('show');
+
+    document.getElementById('letterBtn').classList.add('show');
+
+    launchCelebration();
+    setTimeout(launchCelebration, 550);
+    setTimeout(launchCelebration, 1100);
+  }
+
+  // ── Letter ──
+  function openLetter(e) {
+    e.preventDefault();
+    const subject = encodeURIComponent("💌 Something I've been wanting to tell you, Nicky");
+    const body = encodeURIComponent(
+`Hey Nicky 💖,
+
+I know we haven't talked that much, but honestly… that's kind of what makes this even harder to explain.
+
+You don't need a lot of time to leave a mark on someone. And you've left one on me.
+
+You're one of the most interesting people I've come across — the way you carry yourself, the way you talk, the things you say. There's a warmth in you that just pulls people in without you even trying. The way you're so caring, so kind, so mature — it's rare. Genuinely rare.
+
+And your sense of humor? Your intelligence? The way conversations with you just feel different — more alive, more real? I don't even know how to put that into words properly.
+
+And okay, your voice. Your voice is literally the cutest thing and I don't know how you're not aware of that 🙈
+
+But more than any of that — you motivated me. Without even knowing it, something about you made me want to actually show up and do my things. I find myself focusing more, doing better, being more. That's not something just anyone can do.
+
+Even though we don't talk much, I like you. I really do. And I just… needed you to know.
+
+You don't have to do anything with this. You don't have to say anything. I just wanted to be honest because you deserve honesty.
+
+You're amazing, Nicky. Genuinely.
+
+— Someone who notices you 💌`
+    );
+    window.location.href = `mailto:nicetofindperson@gmail.com?subject=${subject}&body=${body}`;
+  }
+
+  // ── Celebration ──
+  function launchCelebration() {
+    const stage = document.getElementById('emoji-stage');
+    const dancers = ['💃','🕺','🎉','💖','🌸','✨','💕','🎊','🌷','😍','🥰','💫','🎈','🎀'];
+
+    for (let i = 0; i < 16; i++) {
+      const d = document.createElement('div');
+      d.className = 'dancer';
+      d.textContent = dancers[Math.floor(Math.random() * dancers.length)];
+      d.style.left     = (5 + Math.random() * 90) + 'vw';
+      d.style.top      = (10 + Math.random() * 72) + 'vh';
+      d.style.fontSize = (1.8 + Math.random() * 2.4) + 'rem';
+      d.style.animationDelay    = (Math.random() * 0.9) + 's';
+      d.style.animationDuration = (1.9 + Math.random() * 1.2) + 's';
+      stage.appendChild(d);
+      setTimeout(() => d.remove(), 3800);
+    }
+
+    const colors = ['#ff6fa8','#ffe066','#c77dff','#ffcba4','#ff3d84','#a8edea','#ffc2e0','#b5ead7'];
+    for (let i = 0; i < 55; i++) {
+      const c = document.createElement('div');
+      c.className = 'confetti-piece';
+      c.style.left     = (15 + Math.random() * 70) + 'vw';
+      c.style.top      = '-12px';
+      c.style.background = colors[Math.floor(Math.random() * colors.length)];
+      c.style.width    = (6 + Math.random() * 10) + 'px';
+      c.style.height   = (6 + Math.random() * 10) + 'px';
+      c.style.borderRadius = Math.random() > 0.5 ? '50%' : '3px';
+      c.style.animationDuration = (2 + Math.random() * 2.2) + 's';
+      c.style.animationDelay    = (Math.random() * 0.7) + 's';
+      stage.appendChild(c);
+      setTimeout(() => c.remove(), 5000);
+    }
+
+    const yesBtn = document.getElementById('btnYes');
+    const rect   = yesBtn.getBoundingClientRect();
+    const cx = rect.left + rect.width  / 2;
+    const cy = rect.top  + rect.height / 2;
+    for (let i = 0; i < 12; i++) {
+      const h = document.createElement('div');
+      h.className = 'heart-burst';
+      h.textContent = ['💖','💕','💗','💓','💞'][Math.floor(Math.random() * 5)];
+      const angle = (i / 12) * Math.PI * 2;
+      const dist  = 70 + Math.random() * 90;
+      h.style.left     = cx + 'px';
+      h.style.top      = cy + 'px';
+      h.style.fontSize = (1.4 + Math.random() * 1.2) + 'rem';
+      h.style.setProperty('--dx', Math.cos(angle) * dist + 'px');
+      h.style.setProperty('--dy', Math.sin(angle) * dist + 'px');
+      h.style.animationDelay = (Math.random() * 0.35) + 's';
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 1400);
+    }
+  }
+</script>
+</body>
+</html>
